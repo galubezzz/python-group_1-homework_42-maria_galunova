@@ -22,6 +22,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def parent_comments(self):
+        return self.comments.filter(parent_comment__isnull=True)
+
 
 class Comment(models.Model):
     text = models.TextField(max_length=1000, verbose_name="Комментарий")
@@ -33,6 +36,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
 
 
 class Rating(models.Model):

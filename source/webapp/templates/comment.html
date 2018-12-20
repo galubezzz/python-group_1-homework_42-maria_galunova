@@ -1,0 +1,8 @@
+<li>
+    <p>{{ comment.author }} : {{ comment.text }}</p>
+    <ul>
+        {% for comment in comment.child_comments.all %}
+            {% include "comment.html" %}
+        {% endfor %}
+    </ul>
+</li>

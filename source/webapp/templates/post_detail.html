@@ -5,4 +5,16 @@
     <h1>{{ post.title }}</h1>
     <p>{{ post.text }}</p>
     <p><b>By {{ post.author }}</b></p>
+    <h2>Комментарии:</h2>
+    <ul>
+        {% for comment in post.parent_comments %}
+            {% include "comment.html" %}
+        {% endfor %}
+    </ul>
+    <h2>Оценки:</h2>
+    <ul>
+    {% for rating in post.ratings.all %}
+        <li>{{ rating.user.name }}: {{ rating.get_value_display }}</li>
+    {% endfor %}
+</ul>
 {% endblock %}

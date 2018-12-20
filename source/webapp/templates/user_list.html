@@ -4,5 +4,6 @@
     {% for user in user_list %}
         {{ user.name }} <br>
         <a href="{% url 'user_detail' user.pk %}">Подробнее</a> <br>
+        <a href="{% url 'favorites' user.pk %}"><i class="fas fa-heart"></i></a>
     {% endfor %}
 {% endblock %}

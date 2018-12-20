@@ -23,3 +23,7 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'post_detail.html'
+
+class FavoritesView(DetailView):
+    model = User
+    template_name = 'favorites.html'
