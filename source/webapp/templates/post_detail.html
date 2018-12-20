@@ -4,7 +4,7 @@
 {% block content %}
     <h1>{{ post.title }}</h1>
     {{ post.date }}
-    <a href="{% url "post_update" post.pk %}">Изменить пост</a>
+    <a href="{% url "post_update" post.pk %}"><i class="fas fa-edit"></i></a>
     <p>{{ post.text }}</p>
     <p><b>By {{ post.author }}</b></p>
     <h2>Комментарии:</h2>

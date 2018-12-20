@@ -1,5 +1,5 @@
 <li>
-    <p>{{ comment.author }} : {{ comment.text }}</p>
+    <p>{{ comment.author }} : {{ comment.text }}  <a href="{% url 'comment_update' comment.pk %}"><i class="fas fa-edit"></i></a></p>
     <ul>
         {% for comment in comment.child_comments.all %}
             {% include "comment.html" %}
