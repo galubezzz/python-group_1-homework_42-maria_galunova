@@ -15,3 +15,11 @@ class UserDetailView(DetailView):
     template_name = 'user_details.html'
 
 
+class PostListView(ListView):
+    model = Post
+    template_name = 'posts_list.html'
+
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'post_detail.html'
