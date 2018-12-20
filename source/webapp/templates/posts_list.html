@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}Посты{% endblock %}
 {% block content %}
+
+    <form action="{% url 'posts_list' %}" method="GET">
+            {% csrf_token %}
+            {{ form.post_keywords.label }}:{{ form.post_keywords }}
+            <button type="submit" class="btn btn-primary">Искать</button>
+    </form>
     <dl>
     {% for post in post_list %}
         <li>

@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from webapp.models import User, Post, Comment, Rating
-from webapp.forms import PostForm, CommentForm, CommentUpdateForm
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, FormView
+from webapp.models import User, Post, Comment
+from webapp.forms import PostForm, CommentForm, CommentUpdateForm, PostSearchForm
 from django.urls import reverse, reverse_lazy
 
 
@@ -17,9 +17,19 @@ class UserDetailView(DetailView):
     template_name = 'user_details.html'
 
 
-class PostListView(ListView):
+class PostListView(ListView, FormView):
     model = Post
     template_name = 'posts_list.html'
+    form_class = PostSearchForm
+
+    def get_queryset(self):
+
+        post_keywords = self.request.GET.get('post_keywords')
+        if post_keywords:
+            return self.model.objects.filter(title__icontains=post_keywords) \
+                   | self.model.objects.filter(text__icontains=post_keywords)
+        else:
+            return self.model.objects.all()
 
 
 class PostDetailView(DetailView):
