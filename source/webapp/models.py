@@ -31,7 +31,6 @@ class Comment(models.Model):
     date = models.DateTimeField(default=datetime.now, verbose_name='Дата')
     author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='comments', verbose_name='Автор')
     parent_comment = models.ForeignKey('Comment', null=True, blank=True, on_delete=models.PROTECT, related_name='child_comments', verbose_name='Родительский комментарий')
-    date = models.DateTimeField(default=datetime.now, verbose_name='Дата')
     post = models.ForeignKey(Post, on_delete=models.PROTECT, related_name='comments', verbose_name='Пост')
 
     def __str__(self):

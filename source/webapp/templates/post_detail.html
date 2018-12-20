@@ -13,6 +13,7 @@
             {% include "comment.html" %}
         {% endfor %}
     </ul>
+    <a href="{% url "comment_create" %}">Добавить комментарий</a>
     <h2>Оценки:</h2>
     <ul>
     {% for rating in post.ratings.all %}
